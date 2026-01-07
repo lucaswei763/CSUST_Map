@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Map_4App: App {
+struct CSUSTMap: App {
     var body: some Scene {
         WindowGroup {
             CampusMapView()

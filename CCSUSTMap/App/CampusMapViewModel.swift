@@ -36,7 +36,7 @@ enum Campus: String, CaseIterable, Identifiable {
 
 class CampusMapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
 
-    @Published var cameraPosition: MapCameraPosition = Campus.jinpenling.position
+    @Published var cameraPosition: MapCameraPosition = .automatic
     @Published var selectedCampus: Campus = .jinpenling {
         didSet { cameraPosition = selectedCampus.position }
     }

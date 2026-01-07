@@ -24,15 +24,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5AED28FB2F0E57D70091814C /* Map_4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Map_4.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5AED29082F0E57D80091814C /* Map_4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Map_4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5AED29122F0E57D80091814C /* Map_4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Map_4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AED28FB2F0E57D70091814C /* CSUSTMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSUSTMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AED29082F0E57D80091814C /* CSUSTMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSUSTMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AED29122F0E57D80091814C /* CSUSTMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSUSTMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		5AED28FD2F0E57D70091814C /* Map_4 */ = {
+		5AED28FD2F0E57D70091814C /* CCSUSTMap */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Map_4;
+			path = CCSUSTMap;
 			sourceTree = "<group>";
 		};
 		5AED290B2F0E57D80091814C /* Map_4Tests */ = {
@@ -75,7 +75,7 @@
 		5AED28F22F0E57D70091814C = {
 			isa = PBXGroup;
 			children = (
-				5AED28FD2F0E57D70091814C /* Map_4 */,
+				5AED28FD2F0E57D70091814C /* CCSUSTMap */,
 				5AED290B2F0E57D80091814C /* Map_4Tests */,
 				5AED29152F0E57D80091814C /* Map_4UITests */,
 				5AED28FC2F0E57D70091814C /* Products */,
@@ -85,9 +85,9 @@
 		5AED28FC2F0E57D70091814C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5AED28FB2F0E57D70091814C /* Map_4.app */,
-				5AED29082F0E57D80091814C /* Map_4Tests.xctest */,
-				5AED29122F0E57D80091814C /* Map_4UITests.xctest */,
+				5AED28FB2F0E57D70091814C /* CSUSTMap.app */,
+				5AED29082F0E57D80091814C /* CSUSTMapTests.xctest */,
+				5AED29122F0E57D80091814C /* CSUSTMapUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5AED28FA2F0E57D70091814C /* Map_4 */ = {
+		5AED28FA2F0E57D70091814C /* CSUSTMap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5AED291C2F0E57D80091814C /* Build configuration list for PBXNativeTarget "Map_4" */;
+			buildConfigurationList = 5AED291C2F0E57D80091814C /* Build configuration list for PBXNativeTarget "CSUSTMap" */;
 			buildPhases = (
 				5AED28F72F0E57D70091814C /* Sources */,
 				5AED28F82F0E57D70091814C /* Frameworks */,
@@ -108,18 +108,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				5AED28FD2F0E57D70091814C /* Map_4 */,
+				5AED28FD2F0E57D70091814C /* CCSUSTMap */,
 			);
-			name = Map_4;
+			name = CSUSTMap;
 			packageProductDependencies = (
 			);
 			productName = Map_4;
-			productReference = 5AED28FB2F0E57D70091814C /* Map_4.app */;
+			productReference = 5AED28FB2F0E57D70091814C /* CSUSTMap.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5AED29072F0E57D80091814C /* Map_4Tests */ = {
+		5AED29072F0E57D80091814C /* CSUSTMapTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5AED291F2F0E57D80091814C /* Build configuration list for PBXNativeTarget "Map_4Tests" */;
+			buildConfigurationList = 5AED291F2F0E57D80091814C /* Build configuration list for PBXNativeTarget "CSUSTMapTests" */;
 			buildPhases = (
 				5AED29042F0E57D80091814C /* Sources */,
 				5AED29052F0E57D80091814C /* Frameworks */,
@@ -133,16 +133,16 @@
 			fileSystemSynchronizedGroups = (
 				5AED290B2F0E57D80091814C /* Map_4Tests */,
 			);
-			name = Map_4Tests;
+			name = CSUSTMapTests;
 			packageProductDependencies = (
 			);
 			productName = Map_4Tests;
-			productReference = 5AED29082F0E57D80091814C /* Map_4Tests.xctest */;
+			productReference = 5AED29082F0E57D80091814C /* CSUSTMapTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5AED29112F0E57D80091814C /* Map_4UITests */ = {
+		5AED29112F0E57D80091814C /* CSUSTMapUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5AED29222F0E57D80091814C /* Build configuration list for PBXNativeTarget "Map_4UITests" */;
+			buildConfigurationList = 5AED29222F0E57D80091814C /* Build configuration list for PBXNativeTarget "CSUSTMapUITests" */;
 			buildPhases = (
 				5AED290E2F0E57D80091814C /* Sources */,
 				5AED290F2F0E57D80091814C /* Frameworks */,
@@ -156,11 +156,11 @@
 			fileSystemSynchronizedGroups = (
 				5AED29152F0E57D80091814C /* Map_4UITests */,
 			);
-			name = Map_4UITests;
+			name = CSUSTMapUITests;
 			packageProductDependencies = (
 			);
 			productName = Map_4UITests;
-			productReference = 5AED29122F0E57D80091814C /* Map_4UITests.xctest */;
+			productReference = 5AED29122F0E57D80091814C /* CSUSTMapUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5AED28F62F0E57D70091814C /* Build configuration list for PBXProject "Map_4" */;
+			buildConfigurationList = 5AED28F62F0E57D70091814C /* Build configuration list for PBXProject "CSUSTMap" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5AED28FA2F0E57D70091814C /* Map_4 */,
-				5AED29072F0E57D80091814C /* Map_4Tests */,
-				5AED29112F0E57D80091814C /* Map_4UITests */,
+				5AED28FA2F0E57D70091814C /* CSUSTMap */,
+				5AED29072F0E57D80091814C /* CSUSTMapTests */,
+				5AED29112F0E57D80091814C /* CSUSTMapUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		5AED290A2F0E57D80091814C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5AED28FA2F0E57D70091814C /* Map_4 */;
+			target = 5AED28FA2F0E57D70091814C /* CSUSTMap */;
 			targetProxy = 5AED29092F0E57D80091814C /* PBXContainerItemProxy */;
 		};
 		5AED29142F0E57D80091814C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5AED28FA2F0E57D70091814C /* Map_4 */;
+			target = 5AED28FA2F0E57D70091814C /* CSUSTMap */;
 			targetProxy = 5AED29132F0E57D80091814C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -496,7 +496,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Map_4.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Map_4";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSUSTMap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CSUSTMap";
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Debug;
@@ -522,7 +522,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Map_4.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Map_4";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CSUSTMap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CSUSTMap";
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Release;
@@ -580,7 +580,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5AED28F62F0E57D70091814C /* Build configuration list for PBXProject "Map_4" */ = {
+		5AED28F62F0E57D70091814C /* Build configuration list for PBXProject "CSUSTMap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5AED291A2F0E57D80091814C /* Debug */,
@@ -589,7 +589,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5AED291C2F0E57D80091814C /* Build configuration list for PBXNativeTarget "Map_4" */ = {
+		5AED291C2F0E57D80091814C /* Build configuration list for PBXNativeTarget "CSUSTMap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5AED291D2F0E57D80091814C /* Debug */,
@@ -598,7 +598,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5AED291F2F0E57D80091814C /* Build configuration list for PBXNativeTarget "Map_4Tests" */ = {
+		5AED291F2F0E57D80091814C /* Build configuration list for PBXNativeTarget "CSUSTMapTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5AED29202F0E57D80091814C /* Debug */,
@@ -607,7 +607,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5AED29222F0E57D80091814C /* Build configuration list for PBXNativeTarget "Map_4UITests" */ = {
+		5AED29222F0E57D80091814C /* Build configuration list for PBXNativeTarget "CSUSTMapUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5AED29232F0E57D80091814C /* Debug */,
