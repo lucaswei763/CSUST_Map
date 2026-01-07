@@ -11,7 +11,7 @@ import SwiftUI
 
 struct CampusMapView: View {
     @StateObject private var viewModel = CampusMapViewModel()
-
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -23,7 +23,7 @@ struct CampusMapView: View {
                 .frame(height: 200)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
-
+                
                 // MARK: 2. 分类横条 (Category Bar)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
@@ -39,49 +39,54 @@ struct CampusMapView: View {
                     .padding(.horizontal)
                 }
                 .padding(.vertical, 8)
-
+                
                 // MARK: 3. 建筑物列表 (Building List)
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 12) {
                         ForEach(viewModel.filteredPlaces) { place in
-                            PlaceRowView(place: place) {
-                                viewModel.selectPlace(place)
-                            }
+                            PlaceRowView(
+                                place: place,
+                                action: {
+                                    viewModel.selectPlace(place)
+                                },
+                                distanceInfo: viewModel.getDistanceInfo(for: place)
+                            )
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
+                    .padding(.vertical, 8)
+                    
+                    Spacer()
                 }
-                .padding(.vertical, 8)
-
-                Spacer()
-            }
-            .navigationTitle(viewModel.selectedCampus.rawValue)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Menu {
-                        Button {
-                            viewModel.selectedCampus = .jinpenling
-                        } label: {
-                            HStack {
-                                Text("金盆岭校区")
-                                if viewModel.selectedCampus == .jinpenling {
-                                    Image(systemName: "checkmark")
+                .navigationTitle(viewModel.selectedCampus.rawValue)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Menu {
+                            Button {
+                                viewModel.selectedCampus = .jinpenling
+                            } label: {
+                                HStack {
+                                    Text("金盆岭校区")
+                                    if viewModel.selectedCampus == .jinpenling {
+                                        Image(systemName: "checkmark")
+                                    }
                                 }
                             }
-                        }
-
-                        Button {
-                            viewModel.selectedCampus = .yuntang
-                        } label: {
-                            HStack {
-                                Text("云塘校区")
-                                if viewModel.selectedCampus == .yuntang {
-                                    Image(systemName: "checkmark")
+                            
+                            Button {
+                                viewModel.selectedCampus = .yuntang
+                            } label: {
+                                HStack {
+                                    Text("云塘校区")
+                                    if viewModel.selectedCampus == .yuntang {
+                                        Image(systemName: "checkmark")
+                                    }
                                 }
                             }
+                        } label: {
+                            Image(systemName: "building.columns")
+                            Image(systemName: "chevron.down")
                         }
-                    } label: {
-                        Image(systemName: "building.columns")
                     }
                 }
             }
@@ -93,6 +98,7 @@ struct CampusMapView: View {
 struct PlaceRowView: View {
     let place: Place
     let action: () -> Void
+    let distanceInfo: (distance: String, time: String)? // 传入信息
 
     var body: some View {
         Button(action: action) {
@@ -111,17 +117,33 @@ struct PlaceRowView: View {
                         .font(.headline)
                         .foregroundColor(.primary)
 
-                    Text(place.category.rawValue)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                    HStack (spacing: 8) {
+                        Text(place.category.rawValue)
+
+                        
+                    }
+                    .font(.caption)
+                    .foregroundColor(.secondary)
                 }
 
                 Spacer()
 
-                // 右侧箭头
-                Image(systemName: "chevron.right")
+                HStack {
+                    VStack {
+                        //显示距离和时间
+                        if let info = distanceInfo {
+                            Text("\(info.distance)")
+                            Text(" \(info.time)")
+                        }
+                    }
                     .font(.caption)
-                    .foregroundColor(Color(.systemGray3))
+                    .foregroundColor(.secondary)
+                    
+                    // 右侧箭头
+                    Image(systemName: "arrow.turn.up.right")
+                        .font(.caption)
+                        .foregroundColor(Color(.systemGray3))
+                }
             }
             .padding()
             .background(Color(.systemBackground))
