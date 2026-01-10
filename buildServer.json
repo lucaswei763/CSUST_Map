@@ -12,8 +12,8 @@
 	"argv": [
 		"/opt/homebrew/bin/xcode-build-server"
 	],
-	"workspace": "/Users/weiyihang/MapApp/Map_4/Map_4.xcodeproj/project.xcworkspace",
-	"build_root": "/Users/weiyihang/Library/Developer/Xcode/DerivedData/Map_4-cbvtvhejzeialjakdbhokesvzylx",
-	"scheme": "Map_4",
+	"workspace": "/Users/weiyihang/MapApp/CSUSTMap/CSUSTMap.xcodeproj/project.xcworkspace",
+	"build_root": "/Users/weiyihang/Library/Developer/Xcode/DerivedData/CSUSTMap-dlavpnvqluffvddphunqpotfxxtt",
+	"scheme": "CSUSTMap",
 	"kind": "xcode"
 }

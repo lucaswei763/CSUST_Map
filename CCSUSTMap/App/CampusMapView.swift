@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  CampusMapView.swift
 //  Map_4
 //
 //  Created by 韦亦航 on 2026/1/7.
@@ -11,7 +11,7 @@ import SwiftUI
 
 struct CampusMapView: View {
     @StateObject private var viewModel = CampusMapViewModel()
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -23,16 +23,19 @@ struct CampusMapView: View {
                         Marker(
                             selectedPlace.name,
                             systemImage: selectedPlace.category.icon,
-                            coordinate: selectedPlace.location
+                            coordinate: selectedPlace.location.coordinate
                         )
                         .tint(.blue)
                     }
                 }
-                .mapControls { MapUserLocationButton() }
-                .frame(height: 200)
+                .mapControls {
+                    MapUserLocationButton()
+                    MapCompass()
+                }
+                .frame(height: 300)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
-                
+
                 // MARK: 2. 分类横条 (Category Bar)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
@@ -48,16 +51,14 @@ struct CampusMapView: View {
                     .padding(.horizontal)
                 }
                 .padding(.vertical, 8)
-                
+
                 // MARK: 3. 建筑物列表 (Building List)
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 12) {
                         ForEach(viewModel.filteredPlaces) { place in
                             PlaceRowView(
+                                viewModel: viewModel,
                                 place: place,
-                                action: {
-                                    viewModel.selectPlace(place)
-                                },
                                 distanceInfo: viewModel.getDistanceInfo(for: place),
                                 isSelected: viewModel.selectedPlace?.id == place.id
                             )
@@ -65,12 +66,13 @@ struct CampusMapView: View {
                         .padding(.horizontal)
                     }
                     .padding(.vertical, 8)
-                    
+
                     Spacer()
                 }
-                .navigationTitle(viewModel.selectedCampus.rawValue)
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    // MARK: 顶部居中校区切换器
+                    ToolbarItem(placement: .principal) {
                         Menu {
                             Button {
                                 viewModel.selectedCampus = .jinpenling
@@ -82,7 +84,7 @@ struct CampusMapView: View {
                                     }
                                 }
                             }
-                            
+
                             Button {
                                 viewModel.selectedCampus = .yuntang
                             } label: {
@@ -94,8 +96,18 @@ struct CampusMapView: View {
                                 }
                             }
                         } label: {
-                            Image(systemName: "building.columns")
-                            Image(systemName: "chevron.down")
+                            HStack(spacing: 4) {
+                                Text(viewModel.selectedCampus.rawValue)
+                                    .font(.headline)
+                                    .foregroundColor(.primary)
+                                Image(systemName: "chevron.down.circle.fill")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 12)
+                            .background(Color(.systemGray6))
+                            .clipShape(Capsule())
                         }
                     }
                 }
@@ -106,83 +118,78 @@ struct CampusMapView: View {
 
 // MARK: - 辅助子视图：地点行视图
 struct PlaceRowView: View {
+    @ObservedObject var viewModel: CampusMapViewModel
     let place: Place
-    let action: () -> Void
-    let distanceInfo: (distance: String, time: String)? // 传入信息
+    // let action: () -> Void
+    let distanceInfo: (distance: String, time: String)?  // 传入信息
     let isSelected: Bool
 
     var body: some View {
-        Button(action: action) {
-            HStack(spacing: 15) {
-                // 图标
-                Image(systemName: place.category.icon)
-                    .font(.title3)
-                    .foregroundColor(.blue)
-                    .frame(width: 45, height: 45)
-                    .background(Color.blue.opacity(0.1))
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+        HStack(spacing: 15) {
+            // 图标
+            Image(systemName: place.category.icon)
+                .font(.title3)
+                .foregroundColor(.blue)
+                .frame(width: 45, height: 45)
+                .background(Color.blue.opacity(0.1))
+                .clipShape(RoundedRectangle(cornerRadius: 12))
 
-                // 文字详情
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(place.name)
-                        .font(.headline)
-                        .foregroundColor(.primary)
-
-                    HStack (spacing: 8) {
-                        Text(place.category.rawValue)
-
-                        
-                    }
+            // 文字详情
+            VStack(alignment: .leading, spacing: 4) {
+                Text(place.name)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                Text(place.category.rawValue)
                     .font(.caption)
                     .foregroundColor(.secondary)
-                }
-
-                Spacer()
-
-                HStack {
-                    HStack {
-                        //显示距离和时间
-                        if let info = distanceInfo {
-                            Image(systemName: "figure.walk")
-                            VStack {
-                                Text("\(info.distance)")
-                                Text(" \(info.time)")
-                            }
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            
-                        }
-                    }
-                    
-                    
-                    // 右侧箭头
-                    Image(systemName: "arrow.turn.up.right")
-                        .font(.caption)
-                        .foregroundColor(Color(.systemGray3))
-                }
             }
-            .padding()
-            .background(
-                isSelected 
-                ? Color.blue.opacity(0.1) 
+
+            Spacer()
+
+            // 距离和时间信息
+            if let info = distanceInfo {
+                VStack(alignment: .trailing, spacing: 2) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "figure.walk")
+                        Text(info.distance)
+                    }
+                    Text(info.time)
+                }
+                .font(.caption2)
+                .foregroundColor(.secondary)
+            }
+
+            // 导航按钮
+            Button(action: {
+                viewModel.navigation(to: place)
+            }) {
+                Image(systemName: "arrow.triangle.turn.up.right.circle.fill")
+                    .font(.title)
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundColor(.accentColor)
+            }
+            .buttonStyle(.plain)  // 避免影响父视图的点击
+        }
+        .padding()
+        .background(
+            isSelected
+                ? Color.blue.opacity(0.1)
                 : Color(.systemBackground)
-            )
-            .cornerRadius(16)
-            .shadow(
-                color: isSelected
-                ? Color.blue.opacity(0.1) 
-                : Color.black.opacity(0.03),
-                radius: 8, x: 0, y: 4
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(
-                        isSelected
-                        ? Color.blue
-                        : Color(.systemGray6),
-                        lineWidth: isSelected ? 2 : 1
-                    )
-            )
+        )
+        .cornerRadius(16)
+        .shadow(
+            color: Color.black.opacity(0.03),
+            radius: 8, x: 0, y: 4
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(
+                    isSelected ? Color.blue : Color(.systemGray6),
+                    lineWidth: isSelected ? 2 : 1
+                )
+        )
+        .onTapGesture {
+            viewModel.selectPlace(place)
         }
         .padding(.vertical, 4)
     }
@@ -210,5 +217,7 @@ struct CategoryButton: View {
 }
 
 #Preview {
-    CampusMapView()
+    NavigationView {
+        CampusMapView()
+    }
 }

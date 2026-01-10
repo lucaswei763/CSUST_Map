@@ -29,7 +29,7 @@ struct Place: Identifiable {
     let name: String
     let category: Category
     let campus: Campus
-    let location: CLLocationCoordinate2D
+    let location: CLLocation
 }
 
 // MARK: 3. 地点数据
@@ -40,27 +40,21 @@ struct PlaceData {
             name: "第9教学楼",
             category: .teaching,
             campus: .jinpenling,
-            location: CLLocationCoordinate2D(latitude: 28.1558, longitude: 112.9780)
+            location: CLLocation(latitude: 28.1558, longitude: 112.9780)
         ),
         
         Place(
             name: "西苑食堂",
             category: .food,
             campus: .jinpenling,
-            location: CLLocationCoordinate2D(
-                latitude: 28.1549,
-                longitude: 112.9775
-            )
+            location: CLLocation(latitude: 28.1549, longitude: 112.9775)
         ),
         
         Place(
             name: "金盆岭图书馆",
             category: .study,
             campus: .jinpenling,
-            location: CLLocationCoordinate2D(
-                latitude: 28.1562,
-                longitude: 112.9768
-            )
+            location: CLLocation(latitude: 28.1562, longitude: 112.9768)
         ),
         
         // 云塘校区地标
@@ -68,30 +62,21 @@ struct PlaceData {
             name: "综教楼",
             category: .teaching,
             campus: .yuntang,
-            location: CLLocationCoordinate2D(
-                latitude: 28.0668,
-                longitude: 113.0095
-            )
+            location: CLLocation(latitude: 28.0668, longitude: 113.0095)
         ),
         
         Place(
             name: "甘草园食堂",
             category: .food,
             campus: .yuntang,
-            location: CLLocationCoordinate2D(
-                latitude: 28.0700,
-                longitude: 113.0110
-            )
+            location: CLLocation(latitude: 28.0700, longitude: 113.0110)
         ),
         
         Place(
             name: "云塘图书馆",
             category: .study,
             campus: .yuntang,
-            location: CLLocationCoordinate2D(
-                latitude: 28.0680,
-                longitude: 113.0125
-            )
+            location: CLLocation(latitude: 28.0680, longitude: 113.0125)
         )
     ]
 }
